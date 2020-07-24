@@ -1,0 +1,56 @@
+{
+    "name": "flowcms/flowcms",
+    "description": "FlowCMS is a free, open source, simple content management powered by Laravel, AlpineJS and TailwindCSS.",
+    "keywords": [
+        "flowcms",
+        "flowcms"
+    ],
+    "homepage": "https://github.com/flowcms/flowcms",
+    "license": "MIT",
+    "type": "library",
+    "authors": [{
+        "name": "Abhishek Sarmah",
+        "email": "abhisheksarmah660@gmail.com",
+        "role": "Developer"
+    }],
+    "require": {
+        "illuminate/support": "~6.0|~7.0",
+        "laravel/ui": "^2.0",
+        "cyrildewit/eloquent-viewable": "^5.2",
+        "league/glide-laravel": "^1.0"
+    },
+    "require-dev": {
+        "laravel/framework": "^7.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flowcms\\Flowcms\\": "src"
+        },
+        "files": [
+            "src/Helpers/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Flowcms\\Flowcms\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Flowcms\\Flowcms\\FlowcmsServiceProvider"
+            ],
+            "aliases": {
+                "Flowcms": "Flowcms\\Flowcms\\FlowcmsFacade"
+            }
+        }
+    }
+}
