@@ -1,29 +1,68 @@
-# Very short description of the package
+# FlowCMS
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/flowcms/flowcms.svg?style=flat-square)](https://packagist.org/packages/flowcms/flowcms)
-[![Build Status](https://img.shields.io/travis/flowcms/flowcms/master.svg?style=flat-square)](https://travis-ci.org/flowcms/flowcms)
-[![Quality Score](https://img.shields.io/scrutinizer/g/flowcms/flowcms.svg?style=flat-square)](https://scrutinizer-ci.com/g/flowcms/flowcms)
-[![Total Downloads](https://img.shields.io/packagist/dt/flowcms/flowcms.svg?style=flat-square)](https://packagist.org/packages/flowcms/flowcms)
+<p align="center">
+<img src="publishable/assets/cms/banner.svg" alt="Flowcms">	
+</p>
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+## What is Flowcms?
 
-## Installation
+FlowCMS is a free, open source, simple content management powered by **Laravel**, **AlpineJS** and **TailwindCSS**. Built for developers for running blogs, landing pages, use as starter admin panel and many more.
 
-You can install the package via composer:
+## Installation Steps
+
+### 1. Require the Package
+
+After creating your new Laravel application you can include the Flowcms package with the following command:
 
 ```bash
 composer require flowcms/flowcms
 ```
 
+### 2. Add the DB Credentials & APP_URL
+
+Next make sure to create a new database and add your database credentials to your .env file:
+
+```
+DB_HOST=localhost
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
+
+You will also want to update your website URL inside of the `APP_URL` variable inside the .env file:
+
+```
+APP_URL=http://localhost:8000
+```
+
+### 3. Run The Installer
+
+```bash
+php artisan flowcms:install
+```
+
+And we're all good to go!
+
+Start up a local development server with `php artisan serve` And, visit [http://localhost:8000/](http://localhost:8000/).
+
+## Logging in to the Admin Panel
+
+A user should have been created for you with the following login credentials:
+
+> **email:** `admin@admin.com`  
+> **password:** `password`
+
+NOTE: Please ensure to change the password immediately after the first login.
+
 ## Usage
 
-``` php
+```php
 // Usage description here
 ```
 
 ### Testing
 
-``` bash
+```bash
 composer test
 ```
 
@@ -41,8 +80,9 @@ If you discover any security related issues, please email abhisheksarmah660@gmai
 
 ## Credits
 
-- [Abhishek Sarmah](https://github.com/flowcms)
-- [All Contributors](../../contributors)
+-   [Abhishek Sarmah](https://github.com/abhisheksarmah)
+-   [Mithicher Baro](https://github.com/mithicher)
+-   [All Contributors](../../contributors)
 
 ## License
 
