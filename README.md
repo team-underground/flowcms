@@ -35,6 +35,12 @@ You will also want to update your website URL inside of the `APP_URL` variable i
 APP_URL=http://localhost:8000
 ```
 
+Update the `FILESYSTEM_DRIVER` variable inside the .env file to public, so that media manager works correctly:
+
+```
+FILESYSTEM_DRIVER=public
+```
+
 ### 3. Run The Installer
 
 ```bash
