@@ -53,8 +53,7 @@ class FlowcmsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'flowcms');
         $this->loadBladeComponents();
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../migrations'));
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             View::share('pages', Page::getPagesForMenu());
         }
     }
@@ -104,9 +103,6 @@ class FlowcmsServiceProvider extends ServiceProvider
             $this->registerPublishableResources();
             $this->registerConsoleCommands();
         }
-        // $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        // Automatically apply the package configuration
-        // $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'flowcms');
 
         $this->app->singleton('League\Glide\Server', function ($app) {
             // $filesystem = $app->make('Illuminate\Contracts\Filesystem\Filesystem');
