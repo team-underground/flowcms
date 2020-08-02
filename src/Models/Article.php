@@ -144,8 +144,10 @@ class Article extends Model implements Viewable
         $body = html_entity_decode($this->body, ENT_QUOTES, 'UTF-8');
 
         $doc = new \DOMDocument();
+        libxml_use_internal_errors(true);
         $doc->loadHTML($body);
         $tags = $doc->getElementsByTagName('img');
+        libxml_clear_errors();
 
         foreach ($tags as $tag) {
             $old_src = $tag->getAttribute('src');

@@ -54,7 +54,9 @@ class FlowcmsServiceProvider extends ServiceProvider
         $this->loadBladeComponents();
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../migrations'));
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        View::share('pages', Page::getPagesForMenu());
+        if (! $this->app->runningInConsole()) {
+            View::share('pages', Page::getPagesForMenu());
+        }
     }
 
     protected function loadBladeComponents()

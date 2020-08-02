@@ -70,6 +70,7 @@ class MediaController extends Controller
         $exists = Storage::disk('public')->exists($found->path);
         if ($exists) {
             Storage::delete($found->path);
+            // Storage::delete('.cache/' . $found->path);
         }
 
         $found->delete();

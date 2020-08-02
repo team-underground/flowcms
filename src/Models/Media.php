@@ -31,6 +31,10 @@ class Media extends Model
         'user_id' => 'integer',
     ];
 
+    protected $appends = [
+        'image_url'
+    ];
+
     public function getSizeAttribute($value)
     {
         return $this->bytesToHuman($value);
