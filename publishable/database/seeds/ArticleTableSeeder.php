@@ -15,7 +15,7 @@ class ArticleTableSeeder extends Seeder
      */
     public function run()
     {
-        Article::firstOrNew([
+        Article::updateOrCreate([
             'title' => $title = 'How to create a Page with FlowCMS?',
             'slug' => Str::slug($title),
         ], [

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use Flowcms\Flowcms\Models\Setting;
 
 if (!function_exists('setting')) {
@@ -40,13 +41,17 @@ if (!function_exists('responsive_image')) {
             return [];
         }
 
-        $parsesUrl = parse_url($imageUrl);
-
-        $storageFolderPath = explode('/', $parsesUrl['path'])[1];
-
-        $imageSavedUrl = $parsesUrl['scheme'] . '://' . $parsesUrl['host'];
-        $imageSavedSecureUrl = $parsesUrl['scheme'] . 's://' . $parsesUrl['host'];
-
+        if (Str::startsWith($imageUrl, ['http://', 'https://'])) {
+            $parsesUrl = parse_url($imageUrl);
+            $storageFolderPath = explode('/', $parsesUrl['path']);
+            
+            $imageSavedUrl = $parsesUrl['scheme'] . '://' . $parsesUrl['host'];
+            $imageSavedSecureUrl = $parsesUrl['scheme'] . 's://' . $parsesUrl['host'];
+        } else {
+            $imageSavedUrl = url($imageUrl);
+            $imageSavedSecureUrl = url($imageUrl);
+        }
+       
         if (collect([$imageSavedUrl, $imageSavedSecureUrl])->contains(request()->root()) && $storageFolderPath != 'cms') {
             $imageUrl = explode(config('app.url') . '/storage/', $imageUrl);
 

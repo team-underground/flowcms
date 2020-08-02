@@ -34,17 +34,19 @@
 					}, 2500);
 				}
 			}" x-cloak class="relative rounded-lg">
+		 
 				<div class="mb-2 shadow-xs rounded-lg overflow-hidden p-2">
 					<div class="relative pb-32 md:pb-40">
 						@if ($media->type === 'svg')
 							<img
-								src="{{ Storage::url($media->path) }}"
+								src="{{ $media->image_url }}"
 								alt="{{ $media->name }}"
 								class="w-full h-full object-fit inset-0 absolute"
 								loading="lazy">
 						@else
+							
 							@php
-								$responsiveImages = responsive_image( Storage::url($media->path) );
+								$responsiveImages = responsive_image( $media->image_url );
 							@endphp
 
 							<picture>
@@ -52,7 +54,7 @@
 									<source srcset="{{ $responsiveImages['small'] }}" />
 								@endif
 								<img
-									src="{{ Storage::url($media->path) }}"
+									src="{{ $media->image_url }}"
 									alt="{{ $media->name }}"
 									class="w-full h-full object-cover absolute inset-0"
 									loading="lazy">
