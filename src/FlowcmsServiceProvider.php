@@ -2,7 +2,6 @@
 
 namespace Flowcms\Flowcms;
 
-use Flowcms\Components\ComponentsServiceProvider;
 use Illuminate\Routing\Router;
 use Flowcms\Flowcms\Models\Page;
 use Illuminate\Support\Facades\View;
