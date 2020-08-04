@@ -12,6 +12,10 @@
         "name": "Abhishek Sarmah",
         "email": "abhisheksarmah660@gmail.com",
         "role": "Developer"
+    }, {
+        "name": "Mithicher Baro",
+        "email": "mithnehu@gmail.com",
+        "role": "Developer"
     }],
     "require": {
         "illuminate/support": "~6.0|~7.0",

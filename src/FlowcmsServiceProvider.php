@@ -2,6 +2,7 @@
 
 namespace Flowcms\Flowcms;
 
+use Flowcms\Components\ComponentsServiceProvider;
 use Illuminate\Routing\Router;
 use Flowcms\Flowcms\Models\Page;
 use Illuminate\Support\Facades\View;
@@ -51,6 +52,7 @@ class FlowcmsServiceProvider extends ServiceProvider
         $router->middlewareGroup('HtmlMinifier', [HtmlMinifier::class]);
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'flowcms');
+        $this->loadBladeDirectives();
         $this->loadBladeComponents();
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../migrations'));
         if (!$this->app->runningInConsole()) {
@@ -58,7 +60,7 @@ class FlowcmsServiceProvider extends ServiceProvider
         }
     }
 
-    protected function loadBladeComponents()
+    protected function loadBladeDirectives()
     {
         Blade::directive('svg', function ($argument) {
             return "<?php echo file_get_contents($argument); ?>";
@@ -67,7 +69,10 @@ class FlowcmsServiceProvider extends ServiceProvider
         Blade::directive('nl2br', function ($expression) {
             return sprintf('<?php echo nl2br(e(%s)); ?>', $expression);
         });
+    }
 
+    public function loadBladeComponents()
+    {
         collect(self::FLOWCOMPONENTS)->each(function (string $component) {
             Blade::component("flowcms::components.$component", "flowcms-$component");
         });
