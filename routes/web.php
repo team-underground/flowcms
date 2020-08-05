@@ -47,7 +47,7 @@ Route::group(['as' => 'flowcms::', 'namespace' => '\Flowcms\Flowcms\Controllers'
     // Contact us
     Route::post('/contact', 'ContactController@store')->name('contact.store')->middleware(\Spatie\Honeypot\ProtectAgainstSpam::class);
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'auth.flowcms'], function () {
         // Dashboard
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 

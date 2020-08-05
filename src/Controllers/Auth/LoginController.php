@@ -3,7 +3,6 @@
 namespace Flowcms\Flowcms\Controllers\Auth;
 
 use Illuminate\Routing\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -21,12 +20,10 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
+    public function redirectTo()
+    {
+        return route('flowcms::dashboard');
+    }
 
     /**
      * Create a new controller instance.
