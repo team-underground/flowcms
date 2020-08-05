@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Flowcms\Flowcms\Middleware\HtmlMinifier;
+use Flowcms\Flowcms\Middleware\AuthenticateWithFlowcms;
 
 class FlowcmsServiceProvider extends ServiceProvider
 {
@@ -49,6 +50,7 @@ class FlowcmsServiceProvider extends ServiceProvider
         * Optional methods to load your package assets
          */
         $router->middlewareGroup('HtmlMinifier', [HtmlMinifier::class]);
+        $router->middlewareGroup('auth.flowcms', [AuthenticateWithFlowcms::class]);
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'flowcms');
         $this->loadBladeDirectives();
