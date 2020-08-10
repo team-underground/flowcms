@@ -9,24 +9,35 @@ use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
 {
-    public function index()
-    {
-        $medias = Media::latest()->paginate(12);
-        return view('flowcms::media.index', compact('medias'));
-    }
-
-    public function media(Request $request)
+    public function index(Request $request)
     {
         $media = Media::query();
 
-        if ($search = request('s')) {
-            $media->where('name', 'like', '%' . $search . '%');
+        if ($request->ajax()) {
+            if ($search = request('s')) {
+                $media->where('name', 'like', '%' . $search . '%');
+            }
+
+            $medias = $media->latest()->paginate(12);
+            return view('flowcms::media._media', compact('medias'))->render();
         }
 
         $medias = $media->latest()->paginate(12);
-
-        return view('flowcms::media._media', compact('medias'));
+        return view('flowcms::media.index', compact('medias'));
     }
+
+    // public function media(Request $request)
+    // {
+    //     $media = Media::query();
+
+    //     if ($search = request('s')) {
+    //         $media->where('name', 'like', '%' . $search . '%');
+    //     }
+
+    //     $medias = $media->latest()->paginate(12);
+
+    //     return view('flowcms::media._media', compact('medias'));
+    // }
 
     public function store(Request $request)
     {

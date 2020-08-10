@@ -3,6 +3,7 @@
 namespace Flowcms\Flowcms\Models;
 
 use Illuminate\Support\Str;
+use Flowcms\Flowcms\Traits\MoveUploadedFromTempToDestination;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
@@ -10,7 +11,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
 class Article extends Model implements Viewable
 {
-    use InteractsWithViews;
+    use InteractsWithViews, MoveUploadedFromTempToDestination;
 
     /**
      * The attributes that are mass assignable.
@@ -60,7 +61,8 @@ class Article extends Model implements Viewable
         'article_summary',
         'links',
         'images',
-        'article_with_responsive_images'
+        'article_with_responsive_images',
+        'article_views'
     ];
 
     protected static function boot()
@@ -109,6 +111,11 @@ class Article extends Model implements Viewable
             'edit' => route('flowcms::articles.edit', $this),
             'delete' => route('flowcms::articles.destroy', $this),
         ];
+    }
+
+    public function getArticleViewsAttribute()
+    {
+        return views($this)->unique()->count() ?? 0;
     }
 
     public function getImagesAttribute()

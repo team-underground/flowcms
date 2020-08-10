@@ -28,6 +28,18 @@ html {
 body {
 	font-family: 'Inter', sans-serif;
 }
+.underline-indigo-200 {
+	text-decoration-color: #c3dafe;
+}
+.underline-indigo-200:hover {
+	text-decoration-color: #7f9cf5;
+}
+.underline-red-200 {
+	text-decoration-color: #fed7d7;
+}
+.underline-red-200:hover {
+	text-decoration-color: #fc8181;	
+}
 .heading {
 	font-weight: 500;
 	letter-spacing: -0.025em;

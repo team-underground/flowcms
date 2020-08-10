@@ -15,116 +15,144 @@
 @push('styles')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/night-owl.min.css" rel="stylesheet">
 <style>
-	.article-content h1,
-	.article-content h2,
-	.article-content h3 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		color: #2d3748;
-		border-bottom: 0;
-		margin-bottom: 0.75em;
-		line-height: 1.2;
-	}
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #2d3748;
+	border-bottom: 0;
+	margin-bottom: 0.75em;
+	line-height: 1.2;
+}
 
-	.article-content p {
-		margin-bottom: 1em;
-	}
+.article-content div,
+.article-content p,
+.article-content ol,
+.article-content ul {
+	margin-bottom: 1rem;
+}
 
-	.article-content strong {
-		font-weight: 700;
-	}
+.article-content strong {
+	font-weight: 700;
+}
 
-	.article-content ul,
-	.article-content ol {
-		margin-bottom: 1em;
-		margin-left: 1em;
-	}
+.article-content li {
+	position: relative;
+	padding-left: 1.5em;
+	margin-bottom: 1rem;
+}
+.article-content ul li:before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 0;
+	content: "";
+	width: 6px;
+	height: 6px;
+	background-color: #667eea;
+	border-radius: 50%;
+	display: inline-block;
+}
 
-	.article-content ul {
-		list-style-type: disc;
-	}
+.article-content ol {
+	counter-reset: custom-counter;
+}
+.article-content ol li:before {
+	counter-increment: custom-counter;
+	position: absolute;
+	top: 3px;
+	left: 0;
+	content: counter(custom-counter) ".";
+	display: inline-block;
+	font-size: 0.85em;
+	font-weight: 500;
+	color: #667eea;
+	text-align: right;
+}
 
-	.article-content ol {
-		list-style-type: decimal;
-	}
+.article-content li {
+	margin-bottom: 0.25em;
+}
 
-	.article-content li {
-		margin-bottom: 0.25em;
-	}
+.article-content a {
+color: #667eea;
+text-decoration: underline;
+text-decoration-color: hsla(229, 76%, 66%, 0.2);
+-moz-text-decoration-color: hsla(229, 76%, 66%, 0.2);
+}
+.article-content a:hover {
+text-decoration-color: hsla(229, 76%, 66%, 0.8);
+-moz-text-decoration-color: hsla(229, 76%, 66%, 0.8);
+}
 
-	.article-content a {
-		color:#667eea;
-		text-decoration: none;
-		border-bottom: 1px solid #c3dafe;
-	}
+.article-content blockquote {
+	position: relative;
+	display: block;
+	margin-top: 1.875em;
+	margin-bottom: 1.875em;
+	/* font-size: 1.875rem; */
+	font-size: 2.25rem;
+	line-height: 1.2;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-top: 1px solid #cbd5e0;
+	border-bottom: 1px solid #cbd5e0;
+	font-weight: 400;
+	color: #2d3748;
+	font-style: normal;
+	text-align: center;
+	letter-spacing: -0.02em;
+	font-family: 'DM Serif Display', 'Inter', sans-serif;
+}
 
-	.article-content blockquote {
-		position: relative;
-		display: block;
-		margin-top: 1.875em;
-		margin-bottom: 1.875em;
-		/* font-size: 1.875rem; */
-		font-size: 2.25rem;
-		line-height: 1.2;
-		padding-top: 1em;
-		padding-bottom: 1em;
-		border-top: 1px solid #cbd5e0;
-		border-bottom: 1px solid #cbd5e0;
-		font-weight: 400;
-		color: #2d3748;
-		font-style: normal;
-		text-align: center;
-		letter-spacing: -0.02em;
-		font-family: 'DM Serif Display', 'Inter', sans-serif;
-	}
+.article-content blockquote:before,
+.article-content blockquote:after {
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: block;
+	font-family: inherit;
+	font-size: 0.7rem;
+	font-style: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #a0aec0;
+	background-color: #edf2f7;
+	width: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
 
-	.article-content blockquote:before,
-	.article-content blockquote:after {
-		position: absolute;
-		left: 0;
-		right: 0;
-		display: block;
-		font-family: inherit;
-		font-size: 0.7rem;
-		font-style: normal;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: #a0aec0;
-		background-color: #edf2f7;
-		width: 40px;
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
-	}
+.article-content blockquote:before {
+	/* content: "<Blockquote>"; */
+	content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABR0lEQVRIS92VO1LDMBRFr+yGlhUQWmYUQgF2SSmosoOwBHaAswRWADuADtHZnZ0GEXsBWQItTR5jk9iy4480Qwqi0nPmnef79GHY82J7ro8DF/CrmynYesaA0TJ5v+iLs4ttjejs8nbiOusXAKNtUZfhVMVy1ZQMsTsC7os7EJ7KQoSIHARZLMNmcRO2Jth087EtxBjmy1gGbdGYsjUB94QCcJ4XJLDHLHm778rdlC0Fv0OiPPdiud9Hx0q9frUJbNhK4ItnEGaNgiERwmwh5/p3bsGWgrEnVgSctHXMQErfpjZs9QeeoL59rg+cW7DGAhCidCGv8yaGBDprLgCQJrLgBwUaazSDIjrtD/pm0GQrgS8CIjx0zUGfwdiC7TxoDdFnmshJbatqh7KP3bmLNt1NixNNiJiDsOu6MGEP/MH5i/f6/0f0A40qxBmfrS42AAAAAElFTkSuQmCC");
+	top: -11px;
+	/* left: 0; */
+}
 
-	.article-content blockquote:before {
-		/* content: "<Blockquote>"; */
-		content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABR0lEQVRIS92VO1LDMBRFr+yGlhUQWmYUQgF2SSmosoOwBHaAswRWADuADtHZnZ0GEXsBWQItTR5jk9iy4480Qwqi0nPmnef79GHY82J7ro8DF/CrmynYesaA0TJ5v+iLs4ttjejs8nbiOusXAKNtUZfhVMVy1ZQMsTsC7os7EJ7KQoSIHARZLMNmcRO2Jth087EtxBjmy1gGbdGYsjUB94QCcJ4XJLDHLHm778rdlC0Fv0OiPPdiud9Hx0q9frUJbNhK4ItnEGaNgiERwmwh5/p3bsGWgrEnVgSctHXMQErfpjZs9QeeoL59rg+cW7DGAhCidCGv8yaGBDprLgCQJrLgBwUaazSDIjrtD/pm0GQrgS8CIjx0zUGfwdiC7TxoDdFnmshJbatqh7KP3bmLNt1NixNNiJiDsOu6MGEP/MH5i/f6/0f0A40qxBmfrS42AAAAAElFTkSuQmCC");
-		top: -11px;
-		/* left: 0; */
-	}
+.article-content blockquote:after {
+	content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABV0lEQVRIS+2VMVLDMBBF/7qh5Qihx+A0iTtcii6cgHAChhMAN+AI4QauiOgoo9AkNkNLOAEtjS1GHkfIjh3Jhbuos/z2/5V2JRF6HtSzPg4G1h3e2aKzkD1IiQsAEUGucknxx5I/Nim5sBUDf8xWAM7rYsooEa9Dc96V1QZlNvdtaybQXSLmT+p/F1YbtGVkGG5SwU/UdxfWNJC2iqWCF7w/Zs5slxXAMGislZnglnWugQreBtlqYLJOXaQCCPhOBB9ss7TUYZ0KHpRx1Z0vsssRgYqz8D8Iz+mCT80pF7b1LgqCyXF29PujBSVdpct53NQI+9hWAz9kM0hcl4J6yU0G+9hGg3oRs9wbfr6/qM7ZGTa2YnAasogk1GmOtBLhJl3wWV3ZH11OQPLWxmqDIGSDTOLLEFpnuTdtyrwLW23TEXuDhw1yitsKqtvUkT28aLb7sf9H/w+WJMoZbi1gvwAAAABJRU5ErkJggg==");
+	bottom: -12px;
+	/* right: 0; */
+}
+.article-content pre {
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin-bottom: 1em;
+	font-size: 1rem;
+}
+.article-content img,
+.article-content iframe {
+	border-radius: 0.5rem;
+	max-width: 100%;
+	width: 100%;
+}
 
-	.article-content blockquote:after {
-		content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABV0lEQVRIS+2VMVLDMBBF/7qh5Qihx+A0iTtcii6cgHAChhMAN+AI4QauiOgoo9AkNkNLOAEtjS1GHkfIjh3Jhbuos/z2/5V2JRF6HtSzPg4G1h3e2aKzkD1IiQsAEUGucknxx5I/Nim5sBUDf8xWAM7rYsooEa9Dc96V1QZlNvdtaybQXSLmT+p/F1YbtGVkGG5SwU/UdxfWNJC2iqWCF7w/Zs5slxXAMGislZnglnWugQreBtlqYLJOXaQCCPhOBB9ss7TUYZ0KHpRx1Z0vsssRgYqz8D8Iz+mCT80pF7b1LgqCyXF29PujBSVdpct53NQI+9hWAz9kM0hcl4J6yU0G+9hGg3oRs9wbfr6/qM7ZGTa2YnAasogk1GmOtBLhJl3wWV3ZH11OQPLWxmqDIGSDTOLLEFpnuTdtyrwLW23TEXuDhw1yitsKqtvUkT28aLb7sf9H/w+WJMoZbi1gvwAAAABJRU5ErkJggg==");
-		bottom: -12px;
-		/* right: 0; */
-	}
-	.article-content pre {
-		border-radius: 0.5rem;
-		padding: 1rem;
-		margin-bottom: 1em;
-		font-size: 1rem;
-	}
-	.article-content img,
-	.article-content iframe {
-		border-radius: 0.5rem;
-		max-width: 100%;
-		width: 100%;
-	}
-
-	.article-content iframe {
-		height: 400px;
-	}
+.article-content iframe {
+	height: 400px;
+}
 
 
 /* LIGHTBOX BACKGROUND */
@@ -213,7 +241,9 @@
 
 <x-flowcms-section-centered>
 	<div class="mb-2 flex items-center text-sm md:text-base">
-		<x-flowcms-link to="{{ route('flowcms::blog') }}" class="font-medium">&larr; Go back</x-flowcms-link>
+		<x-flowcms-link to="{{ route('flowcms::blog') }}">
+			<svg class="w-4 h-4 mt-px inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+			Go back</x-flowcms-link>
 		<div class="mx-3 text-gray-500 h-8 border-r" style="transform: rotate(15deg)"></div>
 		<x-flowcms-link to="#">{{ $article->category->name }}</x-flowcms-link>
 		<div class="mx-3 text-gray-500 h-8 border-r" style="transform: rotate(15deg)"></div>
@@ -299,6 +329,30 @@
 				<x-flowcms-disqus />
 			@endif
 		</div>
+	</div>
+
+	<div class="flex justify-between mt-10">
+		@isset($previous)
+			<div class="w-1/2 flex-1">
+				<h3 class="text-xs flex items-center uppercase tracking-wider font-medium mb-1" id="sharer-heading">
+					<svg class="w-4 h-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>Previous Article
+				</h3>
+				<x-flowcms-link class="md:text-lg lg:text-xl" to="{{ route('flowcms::blog.show', $previous->slug) }}">
+					{{ $previous->title }}
+				</x-flowcms-link>
+			</div>
+		@endisset
+
+		@isset($next)
+			<div class="text-right w-1/2 flex-1">
+				<h3 class="text-xs flex items-center justify-end uppercase tracking-wider font-medium mb-1" id="sharer-heading">
+					Next Article<svg class="ml-1 w-4 h-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+				</h3>
+				<x-flowcms-link class="md:text-lg lg:text-xl" to="{{ route('flowcms::blog.show', $next->slug) }}">
+					{{ $next->title }}
+				</x-flowcms-link>
+			</div>
+		@endisset
 	</div>
 </x-flowcms-section-centered>
 @endsection

@@ -12,27 +12,31 @@ class ContactController extends Controller
 {
     use ValidatesRequests;
 
-    public function index()
-    {
-        $contacts = Contact::latest()->paginate(10);
-
-        return view('flowcms::contacts.index', compact('contacts'));
-    }
-
-    public function contacts()
+    public function index(Request $request)
     {
         $contact = Contact::query();
 
-        if ($search = request('s')) {
-            $contact->where('name', 'like', '%' . $search . '%');
-            $contact->orWhere('email', 'like', '%' . $search . '%');
-            $contact->orWhere('body', 'like', '%' . $search . '%');
+        if ($request->ajax()) {
+            if ($search = request('s')) {
+                $contact->where('name', 'like', '%' . $search . '%');
+                $contact->orWhere('email', 'like', '%' . $search . '%');
+                $contact->orWhere('body', 'like', '%' . $search . '%');
+            }
+
+            $contacts = $contact->latest()->paginate(10);
+
+            return view('flowcms::contacts._contacts', compact('contacts'));
         }
 
         $contacts = $contact->latest()->paginate(10);
 
-        return view('flowcms::contacts._contacts', compact('contacts'));
+        return view('flowcms::contacts.index', compact('contacts'));
     }
+
+    // public function contacts()
+    // {
+       
+    // }
 
     public function store(Request $request)
     {

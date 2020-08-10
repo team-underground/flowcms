@@ -13,25 +13,39 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::with('category')->orderByDesc('publish_date')->paginate(10);
+        $article = Article::query();
+
+        if ($request->ajax()) {
+            if($search = request('s')) {
+                $article->where('title', 'like', '%' . $search . '%');
+            }
+
+            $articles = $article->latest('publish_date')->paginate(10);
+            $articles->load('category');
+
+            return view('flowcms::articles._articles', compact('articles'))->render();
+        }
+
+        $articles = $article->latest('publish_date')->paginate(10);
+        $articles->load('category');
 
         return view('flowcms::articles.index', compact('articles'));
     }
 
-    public function articles()
-    {
-        $article = Article::with('category')->orderByDesc('publish_date');
+    // public function articles()
+    // {
+    //     $article = Article::with('category')->orderByDesc('publish_date');
 
-        if ($search = request('s')) {
-            $article->where('title', 'like', '%' . $search . '%');
-        }
+    //     if ($search = request('s')) {
+    //         $article->where('title', 'like', '%' . $search . '%');
+    //     }
 
-        $articles = $article->paginate(10);
+    //     $articles = $article->paginate(10);
 
-        return view('flowcms::articles._articles', compact('articles'));
-    }
+    //     return view('flowcms::articles._articles', compact('articles'));
+    // }
 
     public function create()
     {
