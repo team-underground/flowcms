@@ -15,6 +15,7 @@ class FlowcmsServiceProvider extends ServiceProvider
     private const FLOWCOMPONENTS = [
         "alert",
         "badge",
+        "base-datatable",
         "button",
         "card",
         "checkbox",

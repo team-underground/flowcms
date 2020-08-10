@@ -50,10 +50,13 @@
 							</div>
 						</div>
 
-						<div @error('body') class="ql-editor-haserror" @enderror>
-							<x-flowcms-quill-editor label="Body" name="body" value="{!! $article->body !!}" />
-						</div>
-
+						
+						<x-flowcms-quill-editor 
+							label="Body" 
+							name="body" 
+							value="{!! $article->body !!}" 
+							endpoint="/uploads" />
+						 
 						<x-flowcms-text-input label="SEO - Meta Title" name="seo_title" optional />
 						<x-flowcms-textarea-input label="SEO - Meta Description" name="seo_description" optional />
 					</div>
@@ -74,7 +77,7 @@
 						<x-flowcms-pikaday
 							label="Publish date"
 							name="publish_date"
-							:value="$article->publish_date" />
+							:value="$article->publish_date->format('D M d Y')" />
 
 						<x-flowcms-button type="submit" class="bg-gray-800 text-white">Update Article</x-flowcms-button>
 					</div>

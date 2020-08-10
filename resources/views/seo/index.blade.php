@@ -48,7 +48,7 @@
 				</x-flowcms-form>
 			</x-flowcms-card>
 		@empty
-			<x-flowcms-alert :close="false">No page found.</x-flowcms-alert>
+			<x-flowcms-alert :close="false">No page created yet.</x-flowcms-alert>
 		@endforelse
 	</x-flowcms-section-centered>
 @endsection

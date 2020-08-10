@@ -53,12 +53,16 @@ if (!function_exists('responsive_image')) {
         }
        
         if (collect([$imageSavedUrl, $imageSavedSecureUrl])->contains(request()->root()) && $storageFolderPath != 'cms') {
-            $imageUrl = explode(config('app.url') . '/storage/', $imageUrl);
+            if (Str::contains($imageUrl, 'storage')) {
+                $filename = explode(config('app.url') . '/storage/', $imageUrl)[1];
+            } else {
+                $filename = explode(config('app.url') . '/', $imageUrl)[1];
+            }
 
             return [
-                'small' => url('/img/' . $imageUrl[1] . '?w=320'),
-                'medium' => url('/img/' . $imageUrl[1] . '?w=640'),
-                'large' => url('/img/' . $imageUrl[1] . '?w=1024'),
+                'small' => url('/img/' . $filename . '?w=320'),
+                'medium' => url('/img/' . $filename . '?w=640'),
+                'large' => url('/img/' . $filename . '?w=1024'),
                 // 'xlarge' => url('/img/' . $imageUrl[1] .'?w=1200'),
             ];
         }

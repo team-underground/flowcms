@@ -54,7 +54,7 @@
             });
 
             document.querySelectorAll(".help-text").forEach(el => {
-                let newText = el.innerHTML.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g, '<a class="text-indigo-500 underline" target="_blank" rel="noopener" href="$1">$1</a>');
+                let newText = el.innerHTML.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g, '<a class="text-indigo-500 underline underline-indigo-200" target="_blank" rel="noopener" href="$1">$1</a>');
                 el.innerHTML = newText;
             });
         </script>

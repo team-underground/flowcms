@@ -41,7 +41,7 @@ Route::group(['as' => 'flowcms::', 'namespace' => '\Flowcms\Flowcms\Controllers'
     Route::group(['middleware' => 'HtmlMinifier'], function () {
         Route::get('/blog', 'Front\ArticleController@index')->name('blog');
         Route::get('/blog/{article}', 'Front\ArticleController@show')->name('blog.show');
-        Route::get('/partials/blog', 'Front\ArticleController@articles')->name('blog.partial');
+        // Route::get('/partials/blog', 'Front\ArticleController@articles')->name('blog.partial');
     });
 
     // Contact us
@@ -65,8 +65,8 @@ Route::group(['as' => 'flowcms::', 'namespace' => '\Flowcms\Flowcms\Controllers'
 
 
         // Partial Views
-        Route::get('/partials/articles', 'ArticleController@articles');
-        Route::get('/partials/contacts', 'ContactController@contacts');
+        // Route::get('/partials/articles', 'ArticleController@articles');
+        // Route::get('/partials/contacts', 'ContactController@contacts');
 
         // Page
         Route::get('/pages', 'PageController@index')->name('pages.index');
@@ -101,7 +101,7 @@ Route::group(['as' => 'flowcms::', 'namespace' => '\Flowcms\Flowcms\Controllers'
 
         // Media
         Route::get('/media', 'MediaController@index')->name('media');
-        Route::get('/partials/media', 'MediaController@media');
+        // Route::get('/partials/media', 'MediaController@media');
         Route::post('/media/upload', 'MediaController@store')->name('media.store');
         Route::post('/media/image/delete', 'MediaController@destroy')->name('media.destroy');
     });
