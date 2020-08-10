@@ -97,7 +97,8 @@ class PageController extends Controller
         $validated = $this->validate($request, [
             'title' => [
                 'required',
-                Rule::unique('pages')
+                Rule::unique('pages'),
+                Rule::notIn(['home', 'Home', 'page', 'Page', 'blog', 'Blog', 'article', 'Article'])
             ]
         ]);
 
