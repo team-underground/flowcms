@@ -21,6 +21,10 @@ class ArticleController extends Controller
                 ->paginate(10);
         });
 
+        if (request()->ajax()) {
+            return view('flowcms::front.articles._articles', compact('articles'))->render();
+        }
+
         return view('flowcms::front.articles.index', compact('articles'));
     }
 
@@ -37,7 +41,14 @@ class ArticleController extends Controller
             return $articleFound;
         });
 
-        return view('flowcms::front.articles.show', compact('article'));
+        $previous = Article::where('id', '<', $article->id)->orderBy('id','desc')->isPublished()->first();
+        $next = Article::where('id', '>', $article->id)->orderBy('id')->isPublished()->first();
+
+        return view('flowcms::front.articles.show', [
+            'article' => $article,
+            'previous' => $previous,
+            'next' => $next
+        ]);
     }
 
     public function articles()

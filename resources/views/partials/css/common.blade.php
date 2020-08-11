@@ -1,5 +1,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"  data-turbolinks-track="true">
-<link href="https://pagecdn.io/lib/tailwindcss/1.4.5/tailwind.min.css" rel="stylesheet" crossorigin="anonymous"  data-turbolinks-track="true" />
+<link href="https://pagecdn.io/lib/tailwindcss/1.6.2/tailwind.min.css" rel="stylesheet" crossorigin="anonymous" data-turbolinks-track="true">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
@@ -27,6 +27,18 @@ html {
 }
 body {
 	font-family: 'Inter', sans-serif;
+}
+.underline-indigo-200 {
+	text-decoration-color: #c3dafe;
+}
+.underline-indigo-200:hover {
+	text-decoration-color: #7f9cf5;
+}
+.underline-red-200 {
+	text-decoration-color: #fed7d7;
+}
+.underline-red-200:hover {
+	text-decoration-color: #fc8181;	
 }
 .heading {
 	font-weight: 500;

@@ -66,7 +66,35 @@
 	</div>
 </div>
 
+@if ($contacts->isNotEmpty())
+    <x-flowcms-base-datatable
+        :headings="['From', 'Message', 'Action']"
+        :values="[
+            [
+                'key' => 'name', 
+                'type' => 'data',
+                'width' => 'w-64'
+            ],
+            [
+                'key' => 'body', 
+                'type' => 'data',
+            ],
+            [
+				'key' => 'action', 
+				'type' => ['delete', 'custom']
+			]
+        ]"
+        :data="$contacts"
+        delete-route="flowcms::contacts.destroy"
+        delete-id="uuid"
+        table-striped
+    >
+    </x-flowcms-base-datatable> 
+@else
+    No contacts. 
+@endif
 
+{{-- 
 @forelse($contacts as $contact)
 	<tr class="relative overflow-hidden"
 		x-data="{
@@ -135,4 +163,4 @@
 	<tr>
 		<td colspan="3" class="px-6 py-10 text-center">No messages found.</td>
 	</tr>
-@endforelse
+@endforelse --}}

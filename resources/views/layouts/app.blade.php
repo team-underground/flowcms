@@ -7,7 +7,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" >
         <title>@yield('title', setting('site_name'))</title>
 
-		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//unpkg.com">
 		<link rel="dns-prefetch" href="//pagecdn.io" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
@@ -54,7 +55,7 @@
             });
 
             document.querySelectorAll(".help-text").forEach(el => {
-                let newText = el.innerHTML.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g, '<a class="text-indigo-500 underline" target="_blank" rel="noopener" href="$1">$1</a>');
+                let newText = el.innerHTML.replace(/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g, '<a class="text-indigo-500 underline underline-indigo-200" target="_blank" rel="noopener" href="$1">$1</a>');
                 el.innerHTML = newText;
             });
         </script>

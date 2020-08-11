@@ -63,7 +63,7 @@
             });
 
             document.querySelectorAll(".email-links").forEach(el => {
-				let newText = el.innerHTML.replace(/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/g, '<a class="text-indigo-500 underline" target="_blank" rel="noopener" href="mailto:$1">$1</a>');
+				let newText = el.innerHTML.replace(/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/g, '<a class="text-indigo-500 underline underline-indigo-200" target="_blank" rel="noopener" href="mailto:$1">$1</a>');
 				el.innerHTML = newText;
 			});
         </script>
