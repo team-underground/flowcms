@@ -48,8 +48,8 @@ trait MoveUploadedFromTempToDestination {
 		static::updating(function ($model) {
 
         	// converts all special characters to utf-8
-            $html = mb_convert_encoding($model->body, 'HTML-ENTITIES', 'UTF-8');
-
+			$html = mb_convert_encoding($model->body, 'UTF-8', 'HTML-ENTITIES');
+		 
             // creating new document
 	        $doc = new \DOMDocument('1.0', 'UTF-8');
 

@@ -255,7 +255,7 @@ text-decoration-color: hsla(229, 76%, 66%, 0.8);
 	<div class="my-3">By <x-flowcms-link to="#">{{ Str::title($article->user->name) }}</x-flowcms-link></div>
 
 	@if ($article->image)
-		<div class="w-full relative my-6" style="padding-bottom: 35%">
+		<div class="w-full relative my-6" style="padding-bottom: 45%">
 			<picture>
 				<source media="(min-width: 750px)"
 						srcset="{{ $article->images['large'] }}" />
@@ -268,7 +268,7 @@ text-decoration-color: hsla(229, 76%, 66%, 0.8);
 					src="{{ $article->image }}"
 					alt="Article Image"
 					loading="lazy"
-					class="absolute shadow-xs w-full h-full object-cover rounded-lg">
+					class="absolute shadow-sm w-full h-full object-cover rounded-lg">
 			</picture>
 		</div>
 	@endif
@@ -323,7 +323,9 @@ text-decoration-color: hsla(229, 76%, 66%, 0.8);
 		</aside>
 
 		<div class="md:max-w-2xl md:mx-auto">
-			<div class="md:my-10 article-content lg:text-lg text-gray-700">{!! $article->article_with_responsive_images !!}</div>
+			<div class="md:my-10 article-content lg:text-lg text-gray-700">
+				{!! $article->article_with_responsive_images !!}
+			</div>
 
 			@if(setting('disqus_shortname'))
 				<x-flowcms-disqus />

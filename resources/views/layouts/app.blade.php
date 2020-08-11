@@ -7,7 +7,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" >
         <title>@yield('title', setting('site_name'))</title>
 
-		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//unpkg.com">
 		<link rel="dns-prefetch" href="//pagecdn.io" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />

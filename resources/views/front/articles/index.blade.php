@@ -12,9 +12,11 @@
 		<div 
 			x-ref="articles"
 			x-data="{
+				loading: false,
 				query: new URLSearchParams(location.search).get('s') || '',
 		
 				fetchData(page = null) {
+					this.loading = true;
 					let currentPageFromUrl = location.search.match(/page=(\d+)/) 
 									? location.search.match(/page=(\d+)/)[1] 
 									: 1
@@ -41,6 +43,7 @@
 						})
 						.then(response => response.text())
 						.then(html => {
+							this.loading = false;
 							document.querySelector('#js-articles').innerHTML = html;
 							this.$refs.articles.scrollIntoView({behaviour: 'smooth'});
 						})
@@ -63,21 +66,24 @@
 			x-cloak
 			@reload.window="fetchData()">
 			<div class="flex flex-wrap -mx-4">
-				<div class="px-4 w-full md:w-3/4">
-					<div id="js-articles">
+				<div class="px-4 w-full md:w-3/4 -mt-10 md:mt-auto">
+					<div x-show="loading">
+						@include('flowcms::front.articles._articlesLoader')
+					</div>
+					<div id="js-articles" x-show="! loading">
 						@include('flowcms::front.articles._articles')
 					</div>
 				</div>
 				<div class="px-4 w-full md:w-1/4">
+					<div class="flex flex-row md:flex-col space-x-4 md:space-x-0">
+						<a class="mb-6 block" href="https://github.com/team-underground/flowcms" target="_blank">
+							<img src="/cms/banner-medium-rectangle.png" alt="Flowcms" class="rounded-lg" loading="lazy">
+						</a>
 
-					<a class="mb-6 block" href="https://github.com/team-underground/flowcms" target="_blank">
-						<img src="/cms/banner-medium-rectangle.png" alt="Flowcms" class="rounded-lg" loading="lazy">
-					</a>
-
-					<a class="mb-6 block" href="https://github.com/team-underground/flowcms" target="_blank">
-						<img src="/cms/banner-medium-rectangle4.png" alt="Flowcms" class="rounded-lg" loading="lazy">
-					</a>
-
+						<a class="mb-6 block" href="https://github.com/team-underground/flowcms" target="_blank">
+							<img src="/cms/banner-medium-rectangle4.png" alt="Flowcms" class="rounded-lg" loading="lazy">
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

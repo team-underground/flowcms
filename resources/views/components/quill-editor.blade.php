@@ -83,7 +83,7 @@
 				content = html;
 			});
 			quill.clipboard.addMatcher(Node.ELEMENT_NODE, function (node, delta) {
-				var plaintext = node.innerText;
+				var plaintext = node.innerText.replace(/\s+/g, ' ').trim();
 				var Delta = Quill.import('delta');
 				return new Delta().insert(plaintext);
 			});
@@ -92,6 +92,7 @@
 				selectLocalImage(quill);
 			});
 			// console.log(quill.getContents());
+			// console.log(quill.root.innerText);
 			content = (quill.root.innerHTML === '<p><br></p>')
 					? '' 
 					: quill.root.innerHTML;

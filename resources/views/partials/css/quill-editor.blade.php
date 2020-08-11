@@ -1,5 +1,5 @@
 @push('styles')
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" data-turbolinks-track="reload" />
+<link href="https://unpkg.com/quill@latest/dist/quill.snow.css" rel="stylesheet" data-turbolinks-track="reload" />
 <style>
 .ql-editor-haserror .ql-toolbar.ql-snow + .ql-container.ql-snow {
 	border: 1px solid #f56565;
@@ -113,6 +113,8 @@
 
 
 @push('scripts')
-<script src="https://cdn.quilljs.com/1.3.6/quill.js" defer data-turbolinks-track="reload"></script>
+<script src="https://unpkg.com/quill@1.3.7/dist/quill.js" defer data-turbolinks-track="reload"></script>
+<script src="https://unpkg.com/quill-paste-smart@latest/dist/quill-paste-smart.js" defer data-turbolinks-track="reload"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/quill-magic-url@2.0.1/dist/index.min.js" defer data-turbolinks-track="reload"></script> --}}
 @endpush
 

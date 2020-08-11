@@ -46,11 +46,10 @@
 
 							<div x-show="featuredImage != ''" class="mb-5 relative w-64">
 								<x-flowcms-close x-on:click="featuredImage = ''; $refs.image.value = ''" />
-								<img :src="featuredImage" alt="featuredImage" class="w-64 rounded-lg object-fit">
+								<img :src="featuredImage" alt="featuredImage" class="w-64 rounded-lg object-fit shadow-xs">
 							</div>
 						</div>
 
-						
 						<x-flowcms-quill-editor 
 							label="Body" 
 							name="body" 

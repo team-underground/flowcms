@@ -67,7 +67,7 @@
 							@endforeach
 						</x-flowcms-select-input>
 
-						<x-flowcms-switch label="Status" name="status" :value="false"/>
+					<x-flowcms-switch label="Status" name="status" :value="false"/>
 						<x-flowcms-pikaday label="Publish date" name="publish_date" value="{{ now()->format('D M d Y') }}" />
 
 						<x-flowcms-button type="submit" class="bg-gray-800 text-white">Save Article</x-flowcms-button>
